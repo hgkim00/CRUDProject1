@@ -7,8 +7,8 @@ public class WordCRUD implements ICRUD {
     ArrayList<Word> list;
     Scanner s;
 
-    public WordCRUD(ArrayList<Word> list, Scanner s) {
-        this.list = list;
+    public WordCRUD(Scanner s) {
+        list = new ArrayList<>();
         this.s = s;
     }
      /*
@@ -33,7 +33,7 @@ public class WordCRUD implements ICRUD {
         // add()에서 받은 데이터를 리스트에 넣는 메소드
         Word word = (Word) add();
         list.add(word);
-        System.out.println("단어장에 새 단어가 추가되었습니다.");
+        System.out.println("단어가 성공적으로 추가되었습니다!!");
     }
 
     @Override
@@ -62,5 +62,11 @@ public class WordCRUD implements ICRUD {
 
      */
     public void listAll() {
+        System.out.println("-----------------------------------");
+        for (int i=0; i<list.size(); i++) {
+            System.out.print(i+1 + " ");
+            System.out.println(list.get(i).toString());
+        }
+        System.out.println("-----------------------------------");
     }
 }
