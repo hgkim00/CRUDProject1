@@ -1,11 +1,16 @@
 package com.mycom.word;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class WordCRUD implements ICRUD {
     ArrayList<Word> list;
     Scanner s;
+    final String fname = "WordList.txt";
 
     public WordCRUD(Scanner s) {
         list = new ArrayList<>();
@@ -28,7 +33,7 @@ public class WordCRUD implements ICRUD {
         return new Word(0, level, word, meaning);
     }
     @Override
-    public void addWord() {
+    public void addWord() { // CREATE
         // add()에서 받은 데이터를 리스트에 넣는 메소드
         Word word = (Word) add();
         list.add(word);
@@ -36,7 +41,7 @@ public class WordCRUD implements ICRUD {
     }
 
     @Override
-    public void updateItem() {
+    public void updateItem() { // UPDATE
         System.out.print("\n=> 수정할 단어 검색 : ");
         String keyword = s.next();
         ArrayList<Integer> idList = this.searchList(keyword);
@@ -56,7 +61,7 @@ public class WordCRUD implements ICRUD {
     }
 
     @Override
-    public void deleteItem() {
+    public void deleteItem() { // DELETE
         System.out.print("\n=> 삭제할 단어 검색 : ");
         String keyword = s.next();
         ArrayList<Integer> idList = this.searchList(keyword);
@@ -79,6 +84,28 @@ public class WordCRUD implements ICRUD {
         }
     }
 
+    public void loadFile() {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(fname));
+            String line;
+            int count = 0;
+            while(true) {
+                line = br.readLine();
+                if (line == null) break;
+                String[] data = line.split("\\|");
+                int level = Integer.parseInt(data[0]);
+                String word = data[1];
+                String meaning = data[2];
+                list.add(new Word(0, level, word, meaning));
+                count++;
+            }
+            br.close();
+            System.out.println("\n=> " + count + "개 단어를 불러왔습니다!\n");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     /*
 
     => 원하는 메뉴는? 1
@@ -90,7 +117,7 @@ public class WordCRUD implements ICRUD {
 
      */
     @Override
-    public void listAll() {
+    public void listAll() { // READ
         System.out.println("-----------------------------------");
         for (int i=0; i<list.size(); i++) {
             System.out.print(i+1 + " ");
