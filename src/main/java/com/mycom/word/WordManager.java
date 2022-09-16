@@ -55,6 +55,14 @@ public class WordManager {
                 // show wordlist
                 wordCRUD.listAll();
             }
+            else if (menu == 5) {
+                // update word from wordlist
+                wordCRUD.updateItem();
+            }
+            else if (menu == 6) {
+                // delete word from wordlist
+                wordCRUD.deleteItem();
+            }
             System.out.println("");
         }
     }
