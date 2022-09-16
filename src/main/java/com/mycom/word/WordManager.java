@@ -64,6 +64,10 @@ public class WordManager {
                 // delete word from wordlist
                 wordCRUD.deleteItem();
             }
+            else if (menu == 7) {
+                // save WordList to WordList.txt
+                wordCRUD.saveFile();
+            }
             System.out.println("");
         }
     }
