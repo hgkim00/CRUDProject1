@@ -23,6 +23,7 @@
 
 ## [7. 파일 저장] 메뉴 실행화면
 <img src="https://github.com/k-hyeongi/CRUDProject1/blob/main/screenshot/2022-09-17_04-23-53.png?raw=true" width="80%" />
+
 ### Data File 내용
 <img src="https://github.com/k-hyeongi/CRUDProject1/blob/main/screenshot/datafile.png?raw=true" width="80%" />
 
