@@ -17,3 +17,4 @@
 1|stock|주식, 재고
 2|eye-opener|눈이 휘둥그레질만한 사건
 1|graceful|우아한
+1| glory|영광
